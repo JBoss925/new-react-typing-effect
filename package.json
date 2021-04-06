@@ -1,6 +1,6 @@
 {
   "name": "new-react-typing-effect",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "A newer, more customizable typing effect component; written in Typescript.",
   "main": "lib/index.js",
   "files": [
