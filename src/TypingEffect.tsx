@@ -197,7 +197,7 @@ const TypingEffect: React.FC<TypingEffectProps> = ({ messages, textRenderer, cur
       if (newIndex === data.messages[data.messageInd].length + 1) {
         setAddingToMessage(false);
         timeoutID = setTimeout(() => {
-          removeCharacter(data.messages[data.messageInd].length - 1, {
+          removeCharacter(data.messages[data.messageInd].length, {
             ...data,
             addingToMessage: false,
           });
