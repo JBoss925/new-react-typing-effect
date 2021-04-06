@@ -1,6 +1,9 @@
 # new-react-typing-effect
 A new, more customizable typing effect component; written in Typescript.
 
+### Demo
+![Demo](https://github.com/JBoss925/new-react-typing-effect/blob/main/static/images/typing-effect-demo.gif?raw=true)
+
 ### How to use
 ```tsx
 import TypingEffect from 'new-react-typing-effect';
