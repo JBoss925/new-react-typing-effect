@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "A newer, more customizable typing effect component; written in Typescript.",
   "main": "lib/index.js",
-  "files": ["lib/**/*"],
+  "files": [
+    "lib/**/*"
+  ],
   "scripts": {
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\"",
     "lint": "tslint -p tsconfig.json",

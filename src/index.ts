@@ -1,1 +1,3 @@
-export * from './TypingEffect';
+import TypingEffect from "./TypingEffect";
+
+export default TypingEffect;

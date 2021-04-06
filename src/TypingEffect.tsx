@@ -1,6 +1,4 @@
-import * as ReactImport from 'react';
-const React = ReactImport;
-const { useEffect, useState } = ReactImport;
+import React, { useEffect, useState } from 'react';
 
 /* eslint-disable @typescript-eslint/no-explicit-any, react-hooks/exhaustive-deps */
 
