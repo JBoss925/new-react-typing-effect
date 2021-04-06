@@ -70,7 +70,7 @@ export type TypingEffectProps = {
     // Text options
     text?: {
 
-      // Number of character to type/delete per second
+      // Number of characters to type/delete per second
       charactersPerSecond: number;
 
       // Delay in milliseconds when the message is empty
