@@ -2,16 +2,26 @@
 A new, more customizable typing effect component; written in Typescript.
 
 ### How to use
-```typescript
+```tsx
 import TypingEffect from 'new-react-typing-effect';
 
 const Home: React.FC = () => (
   <TypingEffect
-    messages={["message 1", "message 2", "message 3"]}
+    messages={["Message 1", "Message 2", "Message 3"]}
     cursor="|"
+    textRenderer={(text, renderedCursor, atIndex) => {
+      return (
+        atIndex % 2 === 0 ? 
+        <h2 style={{ color: 'green' }}>{text}{renderedCursor}</h2> :
+        <h2 style={{ color: 'blue' }}>{text}{renderedCursor}</h2>
+      );
+    }}
+    cursorRenderer={(cursor) => (
+      <span style={{ color: 'red' }}>{cursor}</span>
+    )}
     options={{
       text: {
-        charactersPerSecond: 8,
+        charactersPerSecond: 2,
         fullTextDelayMS: 5000,
       },
     }}
@@ -23,7 +33,7 @@ export default Home;
 
 ### Types
 The types are self-documenting (as everything is natively written in Typescript). But here's the props type for quick reference:
-```typescript
+```tsx
 export type TypingEffectProps = {
 
   // The messages to cycle through
