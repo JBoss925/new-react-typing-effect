@@ -35,14 +35,14 @@ export default Home;
 ```
 
 ### Types
-The types are self-documenting (as everything is natively written in Typescript). But here's the props type for quick reference:
+The types are self-documenting (as everything is natively written in Typescript). But here's the props type w/ explanations for quick reference:
 ```tsx
 export type TypingEffectProps = {
 
   // The messages to cycle through
   messages: string[];
 
-  // The cursor to display (instead of the default '|').
+  // The cursor to display (instead of the default '|')
   cursor?: string;
 
   // The function that renders the final element
@@ -61,24 +61,20 @@ export type TypingEffectProps = {
 
     // Cursor options
     cursor?: {
-
       // The number of milliseconds per cursor blink
       blinkPeriod: number;
-
     };
 
     // Text options
     text?: {
-
       // Number of characters to type/delete per second
       charactersPerSecond: number;
 
       // Delay in milliseconds when the message is empty
       emptyTextDelayMS?: number;
-
+      
       // Delay in milliseconds when the message is full
       fullTextDelayMS?: number;
-
     };
   };
 };
