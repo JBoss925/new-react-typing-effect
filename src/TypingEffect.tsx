@@ -6,10 +6,10 @@ import React, { useEffect, useState } from 'react';
 export type TypingEffectOptions = {
   cursor?: {
     // The number of milliseconds per cursor blink
-    blinkPeriod: number;
+    blinkPeriod?: number;
   };
   text?: {
-    charactersPerSecond: number;
+    charactersPerSecond?: number;
     emptyTextDelayMS?: number;
     fullTextDelayMS?: number;
   };
