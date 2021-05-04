@@ -62,13 +62,13 @@ export type TypingEffectProps = {
     // Cursor options
     cursor?: {
       // The number of milliseconds per cursor blink
-      blinkPeriod: number;
+      blinkPeriod?: number;
     };
 
     // Text options
     text?: {
       // Number of characters to type/delete per second
-      charactersPerSecond: number;
+      charactersPerSecond?: number;
 
       // Delay in milliseconds when the message is empty
       emptyTextDelayMS?: number;

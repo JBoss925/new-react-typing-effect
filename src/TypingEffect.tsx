@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-/* eslint-disable @typescript-eslint/no-explicit-any, react-hooks/exhaustive-deps */
+/* eslint-disable react-hooks/exhaustive-deps */
 
 // Type declarations -----------------------------------------------------------
 export type TypingEffectOptions = {
