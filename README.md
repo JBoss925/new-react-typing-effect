@@ -1,84 +1,137 @@
 # new-react-typing-effect
-A new, more customizable typing effect component; written in Typescript.
 
-### Demo
-![Demo](https://github.com/JBoss925/new-react-typing-effect/blob/main/static/images/typing-effect-demo.gif?raw=true)
+A customizable React typing-effect component written in TypeScript. It cycles through messages, types and deletes text at configurable speeds, and lets consumers fully control text and cursor rendering.
 
-### How to use
-```tsx
-import TypingEffect from 'new-react-typing-effect';
+## Features
 
-const Home: React.FC = () => (
-  <TypingEffect
-    messages={["Message 1", "Message 2", "Message 3"]}
-    cursor="|"
-    textRenderer={(text, renderedCursor, atIndex) => {
-      return (
-        atIndex % 2 === 0 ? 
-        <h2 style={{ color: 'green' }}>{text}{renderedCursor}</h2> :
-        <h2 style={{ color: 'blue' }}>{text}{renderedCursor}</h2>
-      );
-    }}
-    cursorRenderer={(cursor) => (
-      <span style={{ color: 'red' }}>{cursor}</span>
-    )}
-    options={{
-      text: {
-        charactersPerSecond: 2,
-        fullTextDelayMS: 5000,
-      },
-    }}
-  />
-);
+- TypeScript-first React component.
+- Message cycling.
+- Configurable typing/deleting speed.
+- Configurable empty-text and full-text delays.
+- Custom cursor string.
+- Custom cursor renderer.
+- Custom text renderer with cursor placement control.
 
-export default Home;
+## Install
+
+```bash
+npm install new-react-typing-effect
 ```
 
-### Types
-The types are self-documenting (as everything is natively written in Typescript). But here's the props type w/ explanations for quick reference:
+or:
+
+```bash
+yarn add new-react-typing-effect
+```
+
+## Usage
+
+```tsx
+import TypingEffect from "new-react-typing-effect";
+
+export function Home() {
+  return (
+    <TypingEffect
+      messages={["Message 1", "Message 2", "Message 3"]}
+      cursor="|"
+      textRenderer={(text, renderedCursor, atIndex) =>
+        atIndex % 2 === 0 ? (
+          <h2 style={{ color: "green" }}>
+            {text}
+            {renderedCursor}
+          </h2>
+        ) : (
+          <h2 style={{ color: "blue" }}>
+            {text}
+            {renderedCursor}
+          </h2>
+        )
+      }
+      cursorRenderer={(cursor) => <span style={{ color: "red" }}>{cursor}</span>}
+      options={{
+        cursor: {
+          blinkPeriod: 500
+        },
+        text: {
+          charactersPerSecond: 2,
+          emptyTextDelayMS: 500,
+          fullTextDelayMS: 5000
+        }
+      }}
+    />
+  );
+}
+```
+
+## Props
+
 ```tsx
 export type TypingEffectProps = {
-
-  // The messages to cycle through
   messages: string[];
-
-  // The cursor to display (instead of the default '|')
   cursor?: string;
-
-  // The function that renders the final element
-  textRenderer?: (text: string, renderedCursor: JSX.Element, atIndex: number) => JSX.Element;
-  /***
-   * NOTE: textRenderer is passed the renderedCursor as an argument, 
-   * allowing you to place the cursor wherever you choose 
-   * [including in the same element as the message]
-  ***/
-
-  // The function that renders the cursor (without worrying about opacity)
+  textRenderer?: (
+    text: string,
+    renderedCursor: JSX.Element,
+    atIndex: number
+  ) => JSX.Element;
   cursorRenderer?: (cursor: string) => JSX.Element;
-
-  // Configuration options
   options?: {
-
-    // Cursor options
     cursor?: {
-      // The number of milliseconds per cursor blink
       blinkPeriod?: number;
     };
-
-    // Text options
     text?: {
-      // Number of characters to type/delete per second
       charactersPerSecond?: number;
-
-      // Delay in milliseconds when the message is empty
       emptyTextDelayMS?: number;
-      
-      // Delay in milliseconds when the message is full
       fullTextDelayMS?: number;
     };
   };
 };
 ```
 
-### Motivation
-I was trying to use the existing react-typing-effect package, but found the type definitions incomplete, and I basically had to write my own cursor functionality for what I wanted to be able to do (which was move the rendered cursor). So, I just decided to write my own version in Typescript. And I figure it may help out some other people in a similar situation.
+## Local Development
+
+Prerequisites:
+
+- Node.js
+- Yarn or npm
+
+Install dependencies:
+
+```bash
+yarn install
+```
+
+Build the package:
+
+```bash
+yarn build
+```
+
+Run lint:
+
+```bash
+yarn lint
+```
+
+Format source files:
+
+```bash
+yarn format
+```
+
+The package build output is written to `lib/`, and `package.json` publishes that directory through the `files` field.
+
+## Release Checklist
+
+1. Update source in `src/`.
+2. Run `yarn lint`.
+3. Run `yarn build`.
+4. Confirm `lib/` contains compiled output.
+5. Bump the package version.
+6. Publish with npm credentials.
+
+## Troubleshooting
+
+- If imports fail in a consuming app, verify the package was built and `lib/index.js` exists.
+- If TypeScript JSX types fail locally, reinstall dependencies and confirm React type versions are installed.
+- If the cursor appears in the wrong location, provide a custom `textRenderer` and place `renderedCursor` explicitly.
